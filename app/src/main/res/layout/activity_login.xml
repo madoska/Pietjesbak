@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,12 +8,27 @@
     android:background="@color/blue">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pietjesbak"
-        android:fontFamily=""/>
+        android:fontFamily="@font/hello_mornin"
+        android:textColor="@color/yellow"
+        android:textSize="40dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideTitle"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="288dp" />
 
     <EditText
+        android:id="@+id/player1"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:inputType="text"
@@ -20,9 +36,15 @@
         android:textColorHint="@color/gray"
         android:textColor="@color/white"
         android:backgroundTint="@color/gray"
-        android:textCursorDrawable="@color/white" />
+        android:textCursorDrawable="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/guideTitle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="15dp"/>
 
     <EditText
+        android:id="@+id/player2"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:inputType="text"
@@ -30,6 +52,23 @@
         android:textColorHint="@color/gray"
         android:textColor="@color/white"
         android:backgroundTint="@color/gray"
-        android:textCursorDrawable="@color/white" />
+        android:textCursorDrawable="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/player1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Let's play!"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/player2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
