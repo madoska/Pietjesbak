@@ -3,6 +3,33 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/blue">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pietjesbak"
+        android:fontFamily=""/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:inputType="text"
+        android:hint="Player 1"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/gray"
+        android:textCursorDrawable="@color/white" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:inputType="text"
+        android:hint="Player 2"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/gray"
+        android:textCursorDrawable="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
