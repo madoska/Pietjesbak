@@ -72,4 +72,30 @@
         android:layout_toRightOf="@id/check2"
         android:layout_marginLeft="-30dp"/>
 
+    <Button
+        android:id="@+id/roll"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Roll"
+        android:background="@drawable/btn_roll"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="70dp"/>
+
+    <Button
+        android:id="@+id/stoef"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Stoef"
+        android:background="@drawable/btn_stoef"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="70dp"/>
+
 </RelativeLayout>
