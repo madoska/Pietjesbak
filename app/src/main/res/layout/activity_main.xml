@@ -44,5 +44,32 @@
         android:layout_margin="10dp"
         android:layout_centerInParent="true"/>
 
+    <CheckBox
+        android:id="@+id/check1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
+        android:layout_below="@id/dice1"
+        android:layout_toLeftOf="@+id/check2"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="60dp"/>
+
+    <CheckBox
+        android:id="@+id/check2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
+        android:layout_below="@id/dice2"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="90dp"/>
+
+    <CheckBox
+        android:id="@+id/check3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
+        android:layout_below="@id/dice3"
+        android:layout_toRightOf="@id/check2"
+        android:layout_marginLeft="-30dp"/>
 
 </RelativeLayout>
