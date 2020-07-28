@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/lilac"
+    android:padding="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/quit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Quit"
+        android:background="@drawable/btn_quit"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+
+    <ImageView
+        android:id="@+id/dice1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/dice1"
+        android:layout_toLeftOf="@+id/dice2"
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:id="@+id/dice2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/dice1"
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:id="@+id/dice3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/dice1"
+        android:layout_toRightOf="@+id/dice2"
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"/>
+
+
+</RelativeLayout>
