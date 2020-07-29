@@ -64,7 +64,7 @@ public class mainActivity extends Activity {
             public void onClick(View v) {
                 // for the first roll, check that all dices have been selected
                 if(rollsAmount == 3 && (check1.isChecked() || check2.isChecked() || check3.isChecked())){
-                    Toast.makeText(getApplicationContext(), "You must roll all dices in the first roll. Please uncheck all boxes.", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "You must roll all dices in the first roll. Please uncheck all boxes.", Toast.LENGTH_SHORT).show();
                 } else {
                     // lower rollsAmount by 1 and adjust textview accordingly
                     rollsAmount -= 1;
