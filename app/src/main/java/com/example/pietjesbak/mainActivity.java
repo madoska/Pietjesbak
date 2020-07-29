@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 
 public class mainActivity extends Activity {
@@ -54,6 +55,21 @@ public class mainActivity extends Activity {
                 // create new Intent object to return to login
                 Intent quit = new Intent(mainActivity.this, login.class);
                 startActivity(quit);
+            }
+        });
+
+        // when tapping "roll"
+        roll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // for the first roll, check that all dices have been selected
+                if(rollsAmount == 3 && (check1.isChecked() || check2.isChecked() || check3.isChecked())){
+                    Toast.makeText(getApplicationContext(), "You must roll all dices in the first roll. Please uncheck all boxes.", Toast.LENGTH_SHORT);
+                } else {
+                    // lower rollsAmount by 1 and adjust textview accordingly
+                    rollsAmount -= 1;
+                    rollsLeft.setText(rollsAmount + " rolls left");
+                }
             }
         });
     }
