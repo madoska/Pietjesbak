@@ -98,4 +98,66 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="70dp"/>
 
+    <TextView
+        android:id="@+id/name1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player 1"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/quit"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/score1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 points"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/name1"/>
+
+    <TextView
+        android:id="@+id/tally1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="|||||||"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/score1"/>
+
+    <TextView
+        android:id="@+id/name2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player 2"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/quit"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/score2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 points"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/name2"/>
+
+    <TextView
+        android:id="@+id/tally2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="|||||||"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/score2"/>
+
 </RelativeLayout>
