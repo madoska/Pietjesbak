@@ -1,7 +1,9 @@
 package com.example.pietjesbak;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,5 +47,14 @@ public class mainActivity extends Activity {
         name1.setText(getIntent().getExtras().getString("player1"));
         name2.setText(getIntent().getExtras().getString("player2"));
 
+        // when quit is pressed --
+        quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // create new Intent object to return to login
+                Intent quit = new Intent(mainActivity.this, login.class);
+                startActivity(quit);
+            }
+        });
     }
 }
