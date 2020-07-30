@@ -3,12 +3,15 @@ package com.example.pietjesbak;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.CheckBox;
 import android.widget.Toast;
+
+import java.util.Random;
 
 
 public class mainActivity extends Activity {
@@ -69,8 +72,53 @@ public class mainActivity extends Activity {
                     // lower rollsAmount by 1 and adjust textview accordingly
                     rollsAmount -= 1;
                     rollsLeft.setText(rollsAmount + " rolls left");
+                    // call rollDice() function
+                    rollDice();
                 }
             }
         });
+    }
+
+    public void rollDice(){
+        for(int i = 0; i <= 3; i++){
+            //check if first dice is rolled (box = unchecked)
+            if(i==1 && !check1.isChecked()){
+                int value1 = randomValue();
+
+                Log.d("log", String.valueOf(value1));
+
+                // display correct dice
+                switch(value1){
+                    case 1:
+                        dice1.setImageResource(R.drawable.dice1);
+                        break;
+
+                    case 2:
+                        dice1.setImageResource(R.drawable.dice2);
+                        break;
+
+                    case 3:
+                        dice1.setImageResource(R.drawable.dice3);
+                        break;
+
+                    case 4:
+                        dice1.setImageResource(R.drawable.dice4);
+                        break;
+
+                    case 5:
+                        dice1.setImageResource(R.drawable.dice5);
+                        break;
+
+                    case 6:
+                        dice1.setImageResource(R.drawable.dice6);
+                        break;
+                }
+            }
+        }
+    }
+
+    public static int randomValue(){
+        Random r = new Random();
+        return r.nextInt(6)+1;
     }
 }
