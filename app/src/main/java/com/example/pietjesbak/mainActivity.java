@@ -113,48 +113,57 @@ public class mainActivity extends Activity {
                         dice1.setImageResource(R.drawable.dice6);
                         break;
                 }
-            } else if(i == 2 && !check2.isChecked()){
+            } else {
+            }
+
+            if(i == 2 && !check2.isChecked()){
                 int value2 = randomValue();
+
+                Log.d("log", String.valueOf(value2));
 
                 switch(value2){
                     case 1:
-                        dice1.setImageResource(R.drawable.dice1);
+                        dice2.setImageResource(R.drawable.dice1);
                         break;
 
                     case 2:
-                        dice1.setImageResource(R.drawable.dice2);
+                        dice2.setImageResource(R.drawable.dice2);
                         break;
 
                     case 3:
-                        dice1.setImageResource(R.drawable.dice3);
+                        dice2.setImageResource(R.drawable.dice3);
                         break;
 
                     case 4:
-                        dice1.setImageResource(R.drawable.dice4);
+                        dice2.setImageResource(R.drawable.dice4);
                         break;
 
                     case 5:
-                        dice1.setImageResource(R.drawable.dice5);
+                        dice2.setImageResource(R.drawable.dice5);
                         break;
 
                     case 6:
-                        dice1.setImageResource(R.drawable.dice6);
+                        dice2.setImageResource(R.drawable.dice6);
                         break;
                 }
-            } else if(i == 3 && !check3.isChecked()){
+            } else {
+            }
+
+            if(i == 3 && !check3.isChecked()){
                 int value3 = randomValue();
+                Log.d("log", String.valueOf(value3));
 
                 switch(value3){
                     case 1:
-                        dice1.setImageResource(R.drawable.dice1);
+                        dice3.setImageResource(R.drawable.dice1);
                         break;
 
                     case 2:
-                        dice1.setImageResource(R.drawable.dice2);
+                        dice3.setImageResource(R.drawable.dice2);
                         break;
 
                     case 3:
-                        dice1.setImageResource(R.drawable.dice3);
+                        dice3.setImageResource(R.drawable.dice3);
                         break;
 
                     case 4:
@@ -162,13 +171,14 @@ public class mainActivity extends Activity {
                         break;
 
                     case 5:
-                        dice1.setImageResource(R.drawable.dice5);
+                        dice3.setImageResource(R.drawable.dice5);
                         break;
 
                     case 6:
-                        dice1.setImageResource(R.drawable.dice6);
+                        dice3.setImageResource(R.drawable.dice6);
                         break;
                 }
+            } else {
             }
         }
     }
