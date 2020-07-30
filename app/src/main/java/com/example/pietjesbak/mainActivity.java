@@ -84,11 +84,13 @@ public class mainActivity extends Activity {
                         rollsAmount = 3;
                         name1.setTextColor(getResources().getColor(R.color.white));
                         name2.setTextColor(getResources().getColor(R.color.blue));
+                        rollsLeft.setText(rollsAmount + " rolls left");
                     } else {
                         activePlayer1 = true;
                         rollsAmount = 3;
                         name1.setTextColor(getResources().getColor(R.color.blue));
                         name2.setTextColor(getResources().getColor(R.color.white));
+                        rollsLeft.setText(rollsAmount + " rolls left");
                     }
                 }
             }
