@@ -113,6 +113,62 @@ public class mainActivity extends Activity {
                         dice1.setImageResource(R.drawable.dice6);
                         break;
                 }
+            } else if(i == 2 && !check2.isChecked()){
+                int value2 = randomValue();
+
+                switch(value2){
+                    case 1:
+                        dice1.setImageResource(R.drawable.dice1);
+                        break;
+
+                    case 2:
+                        dice1.setImageResource(R.drawable.dice2);
+                        break;
+
+                    case 3:
+                        dice1.setImageResource(R.drawable.dice3);
+                        break;
+
+                    case 4:
+                        dice1.setImageResource(R.drawable.dice4);
+                        break;
+
+                    case 5:
+                        dice1.setImageResource(R.drawable.dice5);
+                        break;
+
+                    case 6:
+                        dice1.setImageResource(R.drawable.dice6);
+                        break;
+                }
+            } else if(i == 3 && !check3.isChecked()){
+                int value3 = randomValue();
+
+                switch(value3){
+                    case 1:
+                        dice1.setImageResource(R.drawable.dice1);
+                        break;
+
+                    case 2:
+                        dice1.setImageResource(R.drawable.dice2);
+                        break;
+
+                    case 3:
+                        dice1.setImageResource(R.drawable.dice3);
+                        break;
+
+                    case 4:
+                        dice1.setImageResource(R.drawable.dice4);
+                        break;
+
+                    case 5:
+                        dice1.setImageResource(R.drawable.dice5);
+                        break;
+
+                    case 6:
+                        dice1.setImageResource(R.drawable.dice6);
+                        break;
+                }
             }
         }
     }
