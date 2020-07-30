@@ -75,6 +75,22 @@ public class mainActivity extends Activity {
                     // call rollDice() function
                     rollDice();
                 }
+
+                //if player rolled 3 times
+                if(rollsAmount == 0){
+                    // switch players
+                    if(activePlayer1 == true){
+                        activePlayer1 = false;
+                        rollsAmount = 3;
+                        name1.setTextColor(getResources().getColor(R.color.white));
+                        name2.setTextColor(getResources().getColor(R.color.blue));
+                    } else {
+                        activePlayer1 = true;
+                        rollsAmount = 3;
+                        name1.setTextColor(getResources().getColor(R.color.blue));
+                        name2.setTextColor(getResources().getColor(R.color.white));
+                    }
+                }
             }
         });
     }
@@ -84,7 +100,6 @@ public class mainActivity extends Activity {
             //check if first dice is rolled (box = unchecked)
             if(i==1 && !check1.isChecked()){
                 int value1 = randomValue();
-
                 Log.d("log", String.valueOf(value1));
 
                 // display correct dice
@@ -118,7 +133,6 @@ public class mainActivity extends Activity {
 
             if(i == 2 && !check2.isChecked()){
                 int value2 = randomValue();
-
                 Log.d("log", String.valueOf(value2));
 
                 switch(value2){
