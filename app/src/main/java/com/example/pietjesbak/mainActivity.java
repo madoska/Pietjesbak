@@ -95,6 +95,20 @@ public class mainActivity extends Activity {
                 }
             }
         });
+
+        // if player chooses to stoef
+        stoef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // if player2 taps stoef return error
+                if(!activePlayer1){
+                    Toast.makeText(getApplicationContext(),"Sorry, only player 1 can STOEF :(",Toast.LENGTH_SHORT).show();
+                } else if(rollsAmount == 3){
+                    // if player 1 taps stoef before rolling at least once
+                    Toast.makeText(getApplicationContext(),"You must roll at least once before you can STOEF!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public void rollDice(){
