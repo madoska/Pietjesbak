@@ -23,6 +23,7 @@ public class mainActivity extends Activity {
 
     int rollsAmount = 3;
     int score = 0;
+    int value1, value2, value3;
     Boolean activePlayer1 = true;
 
 
@@ -40,11 +41,11 @@ public class mainActivity extends Activity {
         check3 = findViewById(R.id.check3);
         rollsLeft = findViewById(R.id.rollsLeft);
         stoef = findViewById(R.id.stoef);
-        dice1=findViewById(R.id.dice1);
-        dice2=findViewById(R.id.dice2);
-        dice3=findViewById(R.id.dice3);
-        score1=findViewById(R.id.score1);
-        score2=findViewById(R.id.score2);
+        dice1 = findViewById(R.id.dice1);
+        dice2 = findViewById(R.id.dice2);
+        dice3 = findViewById(R.id.dice3);
+        score1 = findViewById(R.id.score1);
+        score2 = findViewById(R.id.score2);
 
         // set names of player textviews to values of bundles with keys "player1" and "player2"
         name1.setText(getIntent().getExtras().getString("player1"));
@@ -74,6 +75,7 @@ public class mainActivity extends Activity {
                     rollsLeft.setText(rollsAmount + " rolls left");
                     // call rollDice() function
                     rollDice();
+                    calcScore();
                 }
 
                 //if player rolled 3 times
@@ -139,7 +141,7 @@ public class mainActivity extends Activity {
         for(int i = 0; i <= 3; i++){
             //check if first dice is rolled (box = unchecked)
             if(i==1 && !check1.isChecked()){
-                int value1 = randomValue();
+                value1 = randomValue();
                 Log.d("log", String.valueOf(value1));
 
                 // display correct dice
@@ -172,7 +174,7 @@ public class mainActivity extends Activity {
             }
 
             if(i == 2 && !check2.isChecked()){
-                int value2 = randomValue();
+                value2 = randomValue();
                 Log.d("log", String.valueOf(value2));
 
                 switch(value2){
@@ -204,8 +206,7 @@ public class mainActivity extends Activity {
             }
 
             if(i == 3 && !check3.isChecked()){
-                int value3 = randomValue();
-                Log.d("log", String.valueOf(value3));
+                value3 = randomValue();
 
                 switch(value3){
                     case 1:
@@ -235,6 +236,10 @@ public class mainActivity extends Activity {
             } else {
             }
         }
+    }
+
+    public void calcScore(){
+            Log.d("log", "Your score is " + String.valueOf(value1 + value2+ value3));
     }
 
     public void resetDice(){
