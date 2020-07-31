@@ -18,13 +18,12 @@ public class mainActivity extends Activity {
 
     Button quit, roll, stoef;
     TextView name1, name2, rollsLeft, score1, score2;
-    int value1, value2, value3;
     CheckBox check1, check2, check3;
     ImageView dice1, dice2, dice3;
 
     int rollsAmount = 3;
     int score = 0;
-    Boolean turnPlayer1 = true, activePlayer1 = true, activePlayer2 = false;
+    Boolean activePlayer1 = true;
 
 
     @Override
@@ -49,6 +48,7 @@ public class mainActivity extends Activity {
 
         // set names of player textviews to values of bundles with keys "player1" and "player2"
         name1.setText(getIntent().getExtras().getString("player1"));
+        name1.setTextColor(getResources().getColor(R.color.blue));
         name2.setText(getIntent().getExtras().getString("player2"));
 
         // when quit is pressed --
@@ -77,20 +77,22 @@ public class mainActivity extends Activity {
                 }
 
                 //if player rolled 3 times
-                if(rollsAmount == 0){
+                if(rollsAmount < 0){
                     // switch players
                     if(activePlayer1 == true){
-                        activePlayer1 = false;
                         rollsAmount = 3;
+                        activePlayer1 = false;
                         name1.setTextColor(getResources().getColor(R.color.white));
                         name2.setTextColor(getResources().getColor(R.color.blue));
                         rollsLeft.setText(rollsAmount + " rolls left");
+                        resetDice();
                     } else {
-                        activePlayer1 = true;
                         rollsAmount = 3;
+                        activePlayer1 = true;
                         name1.setTextColor(getResources().getColor(R.color.blue));
                         name2.setTextColor(getResources().getColor(R.color.white));
                         rollsLeft.setText(rollsAmount + " rolls left");
+                        resetDice();
                     }
                 }
             }
@@ -106,6 +108,28 @@ public class mainActivity extends Activity {
                 } else if(rollsAmount == 3){
                     // if player 1 taps stoef before rolling at least once
                     Toast.makeText(getApplicationContext(),"You must roll at least once before you can STOEF!",Toast.LENGTH_SHORT).show();
+                } else {
+                    // reset checkboxes
+                    check1.setChecked(false);
+                    check2.setChecked(false);
+                    check3.setChecked(false);
+
+                    // how many times can player2 throw? (total - rolls left)
+                    int stoefRolls = 3 - rollsAmount;
+
+                    if(activePlayer1 == true){
+                        name1.setTextColor(getResources().getColor(R.color.white));
+                        name2.setTextColor(getResources().getColor(R.color.blue));
+                        rollsAmount = stoefRolls;
+                        rollsLeft.setText(rollsAmount + " rolls left");
+                        activePlayer1 = false;
+                    } else {
+                        name1.setTextColor(getResources().getColor(R.color.blue));
+                        name2.setTextColor(getResources().getColor(R.color.white));
+                        rollsAmount = stoefRolls;
+                        rollsLeft.setText(rollsAmount + " rolls left");
+                        activePlayer1 = true;
+                    }
                 }
             }
         });
@@ -197,7 +221,7 @@ public class mainActivity extends Activity {
                         break;
 
                     case 4:
-                        dice1.setImageResource(R.drawable.dice4);
+                        dice3.setImageResource(R.drawable.dice4);
                         break;
 
                     case 5:
@@ -211,6 +235,12 @@ public class mainActivity extends Activity {
             } else {
             }
         }
+    }
+
+    public void resetDice(){
+        dice1.setImageResource(R.drawable.dice1);
+        dice2.setImageResource(R.drawable.dice1);
+        dice3.setImageResource(R.drawable.dice1);
     }
 
     public static int randomValue(){
