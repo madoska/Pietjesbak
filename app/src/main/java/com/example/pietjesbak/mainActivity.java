@@ -246,7 +246,37 @@ public class mainActivity extends Activity {
     }
 
     public void calcScore(){
-
+        // check if all values are the same
+        if(value1 == value2 && value2 == value3){
+            switch(value1){
+                case 100:
+                    score = (value1*3)+10;
+                    Log.d("log", "Your score is " + String.valueOf(score));
+                    Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                    break;
+                case 2:
+                    score = (value1*3)+10;
+                    Log.d("log", "Your score is " + String.valueOf(score));
+                    break;
+                case 3:
+                    score = (value1*3)+10;
+                    Log.d("log", "Your score is " + String.valueOf(score));
+                    break;
+                case 4:
+                    score = (value1*3)+10;
+                    Log.d("log", "Your score is " + String.valueOf(score));
+                    break;
+                case 5:
+                    score = (value1*3)+10;
+                    Log.d("log", "Your score is " + String.valueOf(score));
+                    break;
+                case 60:
+                    Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                    score = (value1*3)+10;
+                    Log.d("log", "Your score is " + String.valueOf(score));
+                    break;
+            }
+        }
     }
 
     public void resetDice(){
