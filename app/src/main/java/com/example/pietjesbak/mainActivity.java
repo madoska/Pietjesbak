@@ -246,9 +246,10 @@ public class mainActivity extends Activity {
     }
 
     public void calcScore(){
-        // check if all values are the same
+        // check if all values are the same (ZAND)
         if(value1 == value2 && value2 == value3){
             switch(value1){
+                // if all 1's => APEN = INSTANT WIN
                 case 100:
                     score = (value1*3)+10;
                     Log.d("log", "Your score is " + String.valueOf(score));
@@ -275,6 +276,12 @@ public class mainActivity extends Activity {
                     score = (value1*3)+10;
                     Log.d("log", "Your score is " + String.valueOf(score));
                     break;
+            }
+        } else if(value1 == 60 || value2 == 60 || value3 == 60){
+            if(value1 == 5 || value2 == 5 || value3 == 5){
+                if(value1 == 4 || value2 == 4 || value3 == 4){
+                    Log.d("log", "SOIXANTE-NEUF");
+                }
             }
         }
     }
