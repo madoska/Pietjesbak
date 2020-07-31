@@ -142,12 +142,12 @@ public class mainActivity extends Activity {
             //check if first dice is rolled (box = unchecked)
             if(i==1 && !check1.isChecked()){
                 value1 = randomValue();
-                Log.d("log", String.valueOf(value1));
 
                 // display correct dice
                 switch(value1){
                     case 1:
                         dice1.setImageResource(R.drawable.dice1);
+                        value1 = 100;
                         break;
 
                     case 2:
@@ -168,18 +168,20 @@ public class mainActivity extends Activity {
 
                     case 6:
                         dice1.setImageResource(R.drawable.dice6);
+                        value1 = 60;
                         break;
                 }
+                Log.d("log", String.valueOf(value1));
             } else {
             }
 
             if(i == 2 && !check2.isChecked()){
                 value2 = randomValue();
-                Log.d("log", String.valueOf(value2));
 
                 switch(value2){
                     case 1:
                         dice2.setImageResource(R.drawable.dice1);
+                        value2 = 100;
                         break;
 
                     case 2:
@@ -200,8 +202,10 @@ public class mainActivity extends Activity {
 
                     case 6:
                         dice2.setImageResource(R.drawable.dice6);
+                        value2 = 60;
                         break;
                 }
+                Log.d("log", String.valueOf(value2));
             } else {
             }
 
@@ -211,6 +215,7 @@ public class mainActivity extends Activity {
                 switch(value3){
                     case 1:
                         dice3.setImageResource(R.drawable.dice1);
+                        value3 = 100;
                         break;
 
                     case 2:
@@ -231,15 +236,17 @@ public class mainActivity extends Activity {
 
                     case 6:
                         dice3.setImageResource(R.drawable.dice6);
+                        value3 = 60;
                         break;
                 }
+                Log.d("log", String.valueOf(value3));
             } else {
             }
         }
     }
 
     public void calcScore(){
-            Log.d("log", "Your score is " + String.valueOf(value1 + value2+ value3));
+
     }
 
     public void resetDice(){
