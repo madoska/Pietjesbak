@@ -301,6 +301,48 @@ public class mainActivity extends Activity {
                     score += 60;
                     break;
             }
+
+            switch(value2){
+                case 1:
+                    score += 100;
+                    break;
+                case 2:
+                    score += 2;
+                    break;
+                case 3:
+                    score += 3;
+                    break;
+                case 4:
+                    score += 4;
+                    break;
+                case 5:
+                    score += 5;
+                    break;
+                case 6:
+                    score += 60;
+                    break;
+            }
+
+            switch(value3){
+                case 1:
+                    score += 100;
+                    break;
+                case 2:
+                    score += 2;
+                    break;
+                case 3:
+                    score += 3;
+                    break;
+                case 4:
+                    score += 4;
+                    break;
+                case 5:
+                    score += 5;
+                    break;
+                case 6:
+                    score += 60;
+                    break;
+            }
         }
     }
 
