@@ -251,37 +251,55 @@ public class mainActivity extends Activity {
             switch(value1){
                 // if all 1's => APEN = INSTANT WIN
                 case 100:
-                    score = (value1*3)+10;
-                    Log.d("log", "Your score is " + String.valueOf(score));
-                    Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
+                    score = 999;
                     break;
                 case 2:
-                    score = (value1*3)+10;
-                    Log.d("log", "Your score is " + String.valueOf(score));
+                    score = 299;
                     break;
                 case 3:
-                    score = (value1*3)+10;
-                    Log.d("log", "Your score is " + String.valueOf(score));
+                    score = 399;
                     break;
                 case 4:
-                    score = (value1*3)+10;
-                    Log.d("log", "Your score is " + String.valueOf(score));
+                    score = 499;
                     break;
                 case 5:
-                    score = (value1*3)+10;
-                    Log.d("log", "Your score is " + String.valueOf(score));
+                    score = 599;
                     break;
+                    // 3 times 6 => 3RD HIGHEST SCORE
                 case 60:
-                    Toast.makeText(getApplicationContext(), "You win!", Toast.LENGTH_SHORT).show();
-                    score = (value1*3)+10;
-                    Log.d("log", "Your score is " + String.valueOf(score));
+                    score = 666;
                     break;
             }
-        } else if(value1 == 60 || value2 == 60 || value3 == 60){
+        }
+        // check for soixante-neuf (6 + 5 + 4) => 2ND HIGHEST SCORE
+        else if(value1 == 60 || value2 == 60 || value3 == 60){
             if(value1 == 5 || value2 == 5 || value3 == 5){
                 if(value1 == 4 || value2 == 4 || value3 == 4){
-                    Log.d("log", "SOIXANTE-NEUF");
+                    score = 699;
                 }
+            }
+        }
+        // else no special combo => calculate normal score
+        else {
+            switch(value1){
+                case 1:
+                    score += 100;
+                    break;
+                case 2:
+                    score += 2;
+                    break;
+                case 3:
+                    score += 3;
+                    break;
+                case 4:
+                    score += 4;
+                    break;
+                case 5:
+                    score += 5;
+                    break;
+                case 6:
+                    score += 60;
+                    break;
             }
         }
     }
