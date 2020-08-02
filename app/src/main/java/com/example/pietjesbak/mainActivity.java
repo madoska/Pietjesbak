@@ -246,103 +246,78 @@ public class mainActivity extends Activity {
     }
 
     public void calcScore(){
-        // check if all values are the same (ZAND)
-        if(value1 == value2 && value2 == value3){
-            switch(value1){
-                // if all 1's => APEN = INSTANT WIN
-                case 100:
-                    score = 999;
-                    break;
-                case 2:
-                    score = 299;
-                    break;
-                case 3:
-                    score = 399;
-                    break;
-                case 4:
-                    score = 499;
-                    break;
-                case 5:
-                    score = 599;
-                    break;
-                    // 3 times 6 => 3RD HIGHEST SCORE
-                case 60:
-                    score = 666;
-                    break;
-            }
+        // calculate the score
+        switch(value1){
+            case 100:
+                score += 100;
+                break;
+            case 2:
+                score += 2;
+                break;
+            case 3:
+                score += 3;
+                break;
+            case 4:
+                score += 4;
+                break;
+            case 5:
+                score += 5;
+                break;
+            case 60:
+                score += 60;
+                break;
         }
-        // check for soixante-neuf (6 + 5 + 4) => 2ND HIGHEST SCORE
-        else if(value1 == 60 || value2 == 60 || value3 == 60){
-            if(value1 == 5 || value2 == 5 || value3 == 5){
-                if(value1 == 4 || value2 == 4 || value3 == 4){
-                    score = 699;
-                }
-            }
+
+        switch(value2){
+            case 100:
+                score += 100;
+                break;
+            case 2:
+                score += 2;
+                break;
+            case 3:
+                score += 3;
+                break;
+            case 4:
+                score += 4;
+                break;
+            case 5:
+                score += 5;
+                break;
+            case 60:
+                score += 60;
+                break;
         }
-        // else no special combo => calculate normal score
-        else {
-            switch(value1){
-                case 1:
-                    score += 100;
-                    break;
-                case 2:
-                    score += 2;
-                    break;
-                case 3:
-                    score += 3;
-                    break;
-                case 4:
-                    score += 4;
-                    break;
-                case 5:
-                    score += 5;
-                    break;
-                case 6:
-                    score += 60;
-                    break;
-            }
 
-            switch(value2){
-                case 1:
-                    score += 100;
-                    break;
-                case 2:
-                    score += 2;
-                    break;
-                case 3:
-                    score += 3;
-                    break;
-                case 4:
-                    score += 4;
-                    break;
-                case 5:
-                    score += 5;
-                    break;
-                case 6:
-                    score += 60;
-                    break;
-            }
+        switch(value3){
+            case 100:
+                score += 100;
+                break;
+            case 2:
+                score += 2;
+                break;
+            case 3:
+                score += 3;
+                break;
+            case 4:
+                score += 4;
+                break;
+            case 5:
+                score += 5;
+                break;
+            case 60:
+                score += 60;
+                break;
+        }
 
-            switch(value3){
-                case 1:
-                    score += 100;
-                    break;
-                case 2:
-                    score += 2;
-                    break;
-                case 3:
-                    score += 3;
-                    break;
-                case 4:
-                    score += 4;
-                    break;
-                case 5:
-                    score += 5;
-                    break;
-                case 6:
-                    score += 60;
-                    break;
-            }
+        // if player rolled 3*100 => APEN = INSTANT WIN
+        if(score == 300){
+            Log.d("log", "Apen!");
+            // else if player rolled 6+5+4 => SOIXANTE NEUF
+        } else if (score == 69){
+            Log.d("log", "Soixante-neuf!");
+        } else {
+            Log.d("log", String.valueOf(score));
         }
     }
 
@@ -350,6 +325,10 @@ public class mainActivity extends Activity {
         dice1.setImageResource(R.drawable.dice1);
         dice2.setImageResource(R.drawable.dice1);
         dice3.setImageResource(R.drawable.dice1);
+    }
+
+    public void logScore(){
+        Log.d("log", String.valueOf(score));
     }
 
     public static int randomValue(){
