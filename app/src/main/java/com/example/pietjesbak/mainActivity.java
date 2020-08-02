@@ -22,7 +22,7 @@ public class mainActivity extends Activity {
     ImageView dice1, dice2, dice3;
 
     int rollsAmount = 3;
-    int score = 0, total1, total2, total3, totalScore;
+    int score = 0, total1, total2, total3, totalScore, scorePlayer1, scorePlayer2;
     int value1, value2, value3;
     Boolean activePlayer1 = true;
     Boolean soixneuf = false;
@@ -95,6 +95,9 @@ public class mainActivity extends Activity {
                         name2.setTextColor(getResources().getColor(R.color.white));
                         rollsText.setText(rollsAmount + " rolls left");
                         resetDice();
+                        clearScore();
+                        //when round ends, compare the scores and determine winner
+                        checkScores();
                     }
                 }
             }
@@ -162,8 +165,7 @@ public class mainActivity extends Activity {
 
     public void thirdRoll(){
         rollsAmount -= 1;
-        rollsText.setText("Switch players!");
-        roll.setText("Switch");
+        rollsText.setText(rollsAmount + " rolls left");
         // call rollDice() function
         rollDice();
         calcScore();
@@ -175,10 +177,12 @@ public class mainActivity extends Activity {
     public void writeScore(){
         if(activePlayer1 == true){
             score1.setText(totalScore + " points");
-            Log.d("log", "Player1: " + totalScore + " points");
+            scorePlayer1 = totalScore;
+            Log.d("log", "Player1: " + scorePlayer1 + " points");
         } else {
             score2.setText(totalScore + " points");
-            Log.d("log", "Player1: " + totalScore + " points");
+            scorePlayer2 = totalScore;
+            Log.d("log", "Player1: " + scorePlayer2 + " points");
         }
     }
 
@@ -380,8 +384,8 @@ public class mainActivity extends Activity {
         dice3.setImageResource(R.drawable.dice1);
     }
 
-    public void logScore(){
-        Log.d("log", String.valueOf(score));
+    public void checkScores(){
+
     }
 
     public static int randomValue(){
