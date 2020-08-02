@@ -17,7 +17,7 @@ import java.util.Random;
 public class mainActivity extends Activity {
 
     Button quit, roll, stoef;
-    TextView name1, name2, rollsLeft, score1, score2;
+    TextView name1, name2, rollsText, score1, score2;
     CheckBox check1, check2, check3;
     ImageView dice1, dice2, dice3;
 
@@ -25,6 +25,9 @@ public class mainActivity extends Activity {
     int score = 0, total1, total2, total3, totalScore;
     int value1, value2, value3;
     Boolean activePlayer1 = true;
+    Boolean soixneuf = false;
+    Boolean zand = false;
+    Boolean apen = false;
 
 
     @Override
@@ -39,7 +42,7 @@ public class mainActivity extends Activity {
         check1 = findViewById(R.id.check1);
         check2 = findViewById(R.id.check2);
         check3 = findViewById(R.id.check3);
-        rollsLeft = findViewById(R.id.rollsLeft);
+        rollsText = findViewById(R.id.rollsText);
         stoef = findViewById(R.id.stoef);
         dice1 = findViewById(R.id.dice1);
         dice2 = findViewById(R.id.dice2);
@@ -83,14 +86,14 @@ public class mainActivity extends Activity {
                         activePlayer1 = false;
                         name1.setTextColor(getResources().getColor(R.color.white));
                         name2.setTextColor(getResources().getColor(R.color.blue));
-                        rollsLeft.setText(rollsAmount + " rolls left");
+                        rollsText.setText(rollsAmount + " rolls left");
                         resetDice();
                     } else {
                         rollsAmount = 3;
                         activePlayer1 = true;
                         name1.setTextColor(getResources().getColor(R.color.blue));
                         name2.setTextColor(getResources().getColor(R.color.white));
-                        rollsLeft.setText(rollsAmount + " rolls left");
+                        rollsText.setText(rollsAmount + " rolls left");
                         resetDice();
                     }
                 }
@@ -120,14 +123,15 @@ public class mainActivity extends Activity {
                         name1.setTextColor(getResources().getColor(R.color.white));
                         name2.setTextColor(getResources().getColor(R.color.blue));
                         rollsAmount = stoefRolls;
-                        rollsLeft.setText(rollsAmount + " rolls left");
+                        rollsText.setText(rollsAmount + " rolls left");
                         activePlayer1 = false;
                     } else {
                         name1.setTextColor(getResources().getColor(R.color.blue));
                         name2.setTextColor(getResources().getColor(R.color.white));
                         rollsAmount = stoefRolls;
-                        rollsLeft.setText(rollsAmount + " rolls left");
+                        rollsText.setText(rollsAmount + " rolls left");
                         activePlayer1 = true;
+                        clearScore();
                     }
                 }
             }
@@ -136,7 +140,7 @@ public class mainActivity extends Activity {
 
     public void firstRoll(){
         rollsAmount -= 1;
-        rollsLeft.setText(rollsAmount + " rolls left");
+        rollsText.setText(rollsAmount + " rolls left");
         // call rollDice() function
         rollDice();
         calcScore();
@@ -147,7 +151,7 @@ public class mainActivity extends Activity {
 
     public void secondRoll(){
         rollsAmount -= 1;
-        rollsLeft.setText(rollsAmount + " rolls left");
+        rollsText.setText(rollsAmount + " rolls left");
         // call rollDice() function
         rollDice();
         calcScore();
@@ -158,7 +162,8 @@ public class mainActivity extends Activity {
 
     public void thirdRoll(){
         rollsAmount -= 1;
-        rollsLeft.setText(rollsAmount + " rolls left");
+        rollsText.setText("Switch players!");
+        roll.setText("Switch");
         // call rollDice() function
         rollDice();
         calcScore();
@@ -175,6 +180,11 @@ public class mainActivity extends Activity {
             score2.setText(totalScore + " points");
             Log.d("log", "Player1: " + totalScore + " points");
         }
+    }
+
+    public void clearScore(){
+        score1.setText("0 points");
+        score2.setText("0 points");
     }
 
     public void rollDice(){
@@ -351,12 +361,16 @@ public class mainActivity extends Activity {
                 break;
         }
 
-        // if player rolled 3*100 => APEN = INSTANT WIN
         if(score == 300){
             Toast.makeText(getApplicationContext(), "Apen!", Toast.LENGTH_SHORT).show();
+            apen = true;
             // else if player rolled 6+5+4 => SOIXANTE NEUF
         } else if (score == 69){
             Toast.makeText(getApplicationContext(), "Soixante-neuf!", Toast.LENGTH_SHORT).show();
+            soixneuf = true;
+        } else if(value1 == value2 && value2 == value3){
+            Toast.makeText(getApplicationContext(), "Soixante-neuf!", Toast.LENGTH_SHORT).show();
+            zand = true;
         }
     }
 

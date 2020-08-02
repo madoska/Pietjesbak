@@ -161,7 +161,7 @@
         android:layout_below="@id/score2"/>
 
     <TextView
-        android:id="@+id/rollsLeft"
+        android:id="@+id/rollsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3 rolls left"
