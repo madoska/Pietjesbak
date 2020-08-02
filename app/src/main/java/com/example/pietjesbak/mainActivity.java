@@ -23,6 +23,8 @@ public class mainActivity extends Activity {
 
     int rollsAmount = 3;
     int score = 0, total1, total2, total3, totalScore, scorePlayer1, scorePlayer2;
+    int tallyPlayer1 = 7;
+    int tallyPlayer2 = 7;
     int value1, value2, value3;
     Boolean activePlayer1 = true;
     Boolean soixneuf = false;
@@ -365,16 +367,18 @@ public class mainActivity extends Activity {
                 break;
         }
 
-        if(score == 300){
-            Toast.makeText(getApplicationContext(), "Apen!", Toast.LENGTH_SHORT).show();
-            apen = true;
+        if(value1 == value2 && value2 == value3){
+            if(value1 == 100){
+                Toast.makeText(getApplicationContext(), "Apen!", Toast.LENGTH_SHORT).show();
+                apen = true;
+            } else {
+                Toast.makeText(getApplicationContext(), "Zand!", Toast.LENGTH_SHORT).show();
+                zand = true;
+            }
             // else if player rolled 6+5+4 => SOIXANTE NEUF
         } else if (score == 69){
             Toast.makeText(getApplicationContext(), "Soixante-neuf!", Toast.LENGTH_SHORT).show();
             soixneuf = true;
-        } else if(value1 == value2 && value2 == value3){
-            Toast.makeText(getApplicationContext(), "Soixante-neuf!", Toast.LENGTH_SHORT).show();
-            zand = true;
         }
     }
 
@@ -385,7 +389,6 @@ public class mainActivity extends Activity {
     }
 
     public void checkScores(){
-
     }
 
     public static int randomValue(){
