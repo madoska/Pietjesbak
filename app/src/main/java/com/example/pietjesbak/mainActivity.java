@@ -22,7 +22,7 @@ public class mainActivity extends Activity {
     ImageView dice1, dice2, dice3;
 
     int rollsAmount = 3;
-    int score = 0;
+    int score = 0, total1, total2, total3, totalScore;
     int value1, value2, value3;
     Boolean activePlayer1 = true;
 
@@ -140,7 +140,7 @@ public class mainActivity extends Activity {
         // call rollDice() function
         rollDice();
         calcScore();
-        score = 0;
+        total1 = score;
     }
 
     public void secondRoll(){
@@ -149,7 +149,9 @@ public class mainActivity extends Activity {
         // call rollDice() function
         rollDice();
         calcScore();
-        score = 0;
+        total2 = score;
+        totalScore = total1 + total2;
+        writeScore();
     }
 
     public void thirdRoll(){
@@ -158,7 +160,13 @@ public class mainActivity extends Activity {
         // call rollDice() function
         rollDice();
         calcScore();
-        score = 0;
+        total3 = score;
+        totalScore = total1 + total2 + total3;
+        writeScore();
+    }
+
+    public void writeScore(){
+        Log.d("log", String.valueOf(totalScore));
     }
 
     public void rollDice(){
@@ -270,6 +278,7 @@ public class mainActivity extends Activity {
     }
 
     public void calcScore(){
+        score = 0;
         // calculate the score
         switch(value1){
             case 100:
