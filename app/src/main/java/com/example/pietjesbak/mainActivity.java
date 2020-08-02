@@ -168,8 +168,13 @@ public class mainActivity extends Activity {
     }
 
     public void writeScore(){
-        score1.setText(totalScore + " points");
-        Log.d("log", totalScore + " points");
+        if(activePlayer1 == true){
+            score1.setText(totalScore + " points");
+            Log.d("log", "Player1: " + totalScore + " points");
+        } else {
+            score2.setText(totalScore + " points");
+            Log.d("log", "Player1: " + totalScore + " points");
+        }
     }
 
     public void rollDice(){
