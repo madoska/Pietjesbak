@@ -141,6 +141,8 @@ public class mainActivity extends Activity {
         rollDice();
         calcScore();
         total1 = score;
+        totalScore = total1;
+        writeScore();
     }
 
     public void secondRoll(){
@@ -166,7 +168,8 @@ public class mainActivity extends Activity {
     }
 
     public void writeScore(){
-        Log.d("log", String.valueOf(totalScore));
+        score1.setText(totalScore + " points");
+        Log.d("log", totalScore + " points");
     }
 
     public void rollDice(){
@@ -345,12 +348,10 @@ public class mainActivity extends Activity {
 
         // if player rolled 3*100 => APEN = INSTANT WIN
         if(score == 300){
-            Log.d("log", "Apen!");
+            Toast.makeText(getApplicationContext(), "Apen!", Toast.LENGTH_SHORT).show();
             // else if player rolled 6+5+4 => SOIXANTE NEUF
         } else if (score == 69){
-            Log.d("log", "Soixante-neuf!");
-        } else {
-            Log.d("log", String.valueOf(score));
+            Toast.makeText(getApplicationContext(), "Soixante-neuf!", Toast.LENGTH_SHORT).show();
         }
     }
 
