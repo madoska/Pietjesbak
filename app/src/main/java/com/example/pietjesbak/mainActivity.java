@@ -79,7 +79,7 @@ public class mainActivity extends Activity {
                 }
 
                 //if player rolled 3 times
-                if(rollsAmount < 0){
+                if(rollsAmount == 0){
                     // switch players
                     if(activePlayer1 == true){
                         rollsAmount = 3;
