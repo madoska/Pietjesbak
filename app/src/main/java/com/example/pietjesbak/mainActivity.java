@@ -69,17 +69,14 @@ public class mainActivity extends Activity {
                 // for the first roll, check that all dices have been selected
                 if(rollsAmount == 3 && (check1.isChecked() || check2.isChecked() || check3.isChecked())){
                     Toast.makeText(getApplicationContext(), "You must roll all dices in the first roll. Please uncheck all boxes.", Toast.LENGTH_SHORT).show();
+                } else if(rollsAmount == 3){
+                    firstRoll();
+                } else if(rollsAmount == 2){
+                    secondRoll();
+                } else if(rollsAmount == 1){
+                    thirdRoll();
                 } else {
-                    // lower rollsAmount by 1 and adjust textview accordingly
-                    rollsAmount -= 1;
-                    rollsLeft.setText(rollsAmount + " rolls left");
-                    // call rollDice() function
-                    rollDice();
-                    calcScore();
-                }
-
                 //if player rolled 3 times
-                if(rollsAmount == 0){
                     // switch players
                     if(activePlayer1 == true){
                         rollsAmount = 3;
@@ -135,6 +132,33 @@ public class mainActivity extends Activity {
                 }
             }
         });
+    }
+
+    public void firstRoll(){
+        rollsAmount -= 1;
+        rollsLeft.setText(rollsAmount + " rolls left");
+        // call rollDice() function
+        rollDice();
+        calcScore();
+        score = 0;
+    }
+
+    public void secondRoll(){
+        rollsAmount -= 1;
+        rollsLeft.setText(rollsAmount + " rolls left");
+        // call rollDice() function
+        rollDice();
+        calcScore();
+        score = 0;
+    }
+
+    public void thirdRoll(){
+        rollsAmount -= 1;
+        rollsLeft.setText(rollsAmount + " rolls left");
+        // call rollDice() function
+        rollDice();
+        calcScore();
+        score = 0;
     }
 
     public void rollDice(){
