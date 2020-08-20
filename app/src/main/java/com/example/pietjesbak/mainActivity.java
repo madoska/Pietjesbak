@@ -15,22 +15,19 @@ import java.util.Random;
 
 
 public class mainActivity extends Activity {
-
     Button quit, roll, stoef;
-    TextView name1, name2, rollsText, score1, score2;
+    TextView name1, name2, rollsText, score1, score2, tally1, tally2;
     CheckBox check1, check2, check3;
     ImageView dice1, dice2, dice3;
 
     int rollsAmount = 3;
     int score = 0, total1, total2, total3, totalScore, scorePlayer1, scorePlayer2;
-    int tallyPlayer1 = 7;
-    int tallyPlayer2 = 7;
+    int tallyPlayer1 = 7, tallyPlayer2 = 7;
     int value1, value2, value3;
     Boolean activePlayer1 = true;
-    Boolean soixneuf = false;
     Boolean zand = false;
     Boolean apen = false;
-
+    Boolean soixneuf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -51,6 +48,8 @@ public class mainActivity extends Activity {
         dice3 = findViewById(R.id.dice3);
         score1 = findViewById(R.id.score1);
         score2 = findViewById(R.id.score2);
+        tally1 = findViewById(R.id.tally1);
+        tally2 = findViewById(R.id.tally2);
 
         // set names of player textviews to values of bundles with keys "player1" and "player2"
         name1.setText(getIntent().getExtras().getString("player1"));
@@ -180,17 +179,20 @@ public class mainActivity extends Activity {
         if(activePlayer1 == true){
             score1.setText(totalScore + " points");
             scorePlayer1 = totalScore;
-            Log.d("log", "Player1: " + scorePlayer1 + " points");
+            Log.d("score", "Player1: " + scorePlayer1 + " points");
         } else {
             score2.setText(totalScore + " points");
             scorePlayer2 = totalScore;
-            Log.d("log", "Player1: " + scorePlayer2 + " points");
+            Log.d("score", "Player2: " + scorePlayer2 + " points");
         }
     }
 
     public void clearScore(){
         score1.setText("0 points");
         score2.setText("0 points");
+        zand = false;
+        apen = false;
+        soixneuf = false;
     }
 
     public void rollDice(){
@@ -227,7 +229,7 @@ public class mainActivity extends Activity {
                         value1 = 60;
                         break;
                 }
-                Log.d("log", String.valueOf(value1));
+                Log.d("score", String.valueOf(value1));
             } else {
             }
 
@@ -261,7 +263,7 @@ public class mainActivity extends Activity {
                         value2 = 60;
                         break;
                 }
-                Log.d("log", String.valueOf(value2));
+                Log.d("score", String.valueOf(value2));
             } else {
             }
 
@@ -295,7 +297,7 @@ public class mainActivity extends Activity {
                         value3 = 60;
                         break;
                 }
-                Log.d("log", String.valueOf(value3));
+                Log.d("score", String.valueOf(value3));
             } else {
             }
         }
@@ -368,16 +370,12 @@ public class mainActivity extends Activity {
         }
 
         if(value1 == value2 && value2 == value3){
-            if(value1 == 100){
-                Toast.makeText(getApplicationContext(), "Apen!", Toast.LENGTH_SHORT).show();
+            if(score == 300){
                 apen = true;
             } else {
-                Toast.makeText(getApplicationContext(), "Zand!", Toast.LENGTH_SHORT).show();
                 zand = true;
             }
-            // else if player rolled 6+5+4 => SOIXANTE NEUF
         } else if (score == 69){
-            Toast.makeText(getApplicationContext(), "Soixante-neuf!", Toast.LENGTH_SHORT).show();
             soixneuf = true;
         }
     }
@@ -389,6 +387,50 @@ public class mainActivity extends Activity {
     }
 
     public void checkScores(){
+        if(scorePlayer1 > scorePlayer2){
+            if(apen){
+                if(tallyPlayer1 < 7) {
+                    tallyPlayer1 = 0;
+                    tally1.setText(tallyPlayer1 + " lines");
+                } else {
+                    tallyPlayer2 = 0;
+                    tally2.setText(tallyPlayer2 + " lines");
+                }
+            } else if(soixneuf){
+                tallyPlayer1 -= 3;
+                tally1.setText(tallyPlayer1 + " lines");
+            } else if(zand){
+                tallyPlayer1 -= 2;
+                tally1.setText(tallyPlayer1 + " lines");
+            } else {
+                tallyPlayer1 -= 1;
+                tally1.setText(tallyPlayer1 + " lines");
+            }
+
+            Toast.makeText(getApplicationContext(), "Player one wins this round. Tally updated.", Toast.LENGTH_SHORT).show();
+        } else {
+            if(apen){
+                if(tallyPlayer2 < 7){
+                    tallyPlayer2 = 0;
+                    tally2.setText(tallyPlayer2 + " lines");
+                } else {
+                    tallyPlayer1 = 0;
+                    tally1.setText(tallyPlayer1 + " lines");
+                }
+            }else if(soixneuf){
+                tallyPlayer2 -= 3;
+                tally2.setText(tallyPlayer2 + " lines");
+            }else if(zand){
+                tallyPlayer2 -= 2;
+                tally2.setText(tallyPlayer2 + " lines");
+            }else {
+                tallyPlayer2 -= 1;
+                tally2.setText(tallyPlayer2 + " lines");
+            }
+            Log.d("score", tallyPlayer1 + " " + tallyPlayer2);
+            Log.d("score", apen + " "+ zand + " " +soixneuf);
+            Toast.makeText(getApplicationContext(), "Player two wins this round. Tally updated.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static int randomValue(){
