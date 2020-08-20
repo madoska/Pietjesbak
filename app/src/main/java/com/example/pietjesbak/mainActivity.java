@@ -145,9 +145,10 @@ public class mainActivity extends Activity {
     public void firstRoll(){
         if(tallyPlayer1 == 0){
             rollsText.setText(getIntent().getExtras().getString("player1") + " wins! 🎉");
-
+            exit();
         } else if (tallyPlayer2 == 0){
             rollsText.setText(getIntent().getExtras().getString("player2") + " wins! 🎉");
+            exit();
         } else {
             rollsAmount -= 1;
             rollsText.setText(rollsAmount + " rolls left");
@@ -163,8 +164,10 @@ public class mainActivity extends Activity {
     public void secondRoll(){
         if(tallyPlayer1 == 0){
             rollsText.setText(getIntent().getExtras().getString("player1") + " wins! 🎉");
+            exit();
         } else if (tallyPlayer2 == 0){
             rollsText.setText(getIntent().getExtras().getString("player2") + " wins! 🎉");
+            exit();
         } else {
             rollsAmount -= 1;
             rollsText.setText(rollsAmount + " rolls left");
@@ -180,8 +183,10 @@ public class mainActivity extends Activity {
     public void thirdRoll(){
         if(tallyPlayer1 == 0){
             rollsText.setText(getIntent().getExtras().getString("player1") + " wins! 🎉");
+            exit();
         } else if (tallyPlayer2 == 0){
             rollsText.setText(getIntent().getExtras().getString("player2") + " wins! 🎉");
+            exit();
         } else {
             rollsAmount -= 1;
             rollsText.setText(rollsAmount + " rolls left");
@@ -397,11 +402,13 @@ public class mainActivity extends Activity {
                         Toast.makeText(getApplicationContext(), "Player one rolled apen.", Toast.LENGTH_SHORT).show();
                         tally1.setText(tallyPlayer1 + " lines");
                         rollsText.setText(getIntent().getExtras().getString("player1") + " wins! 🎉");
+                        exit();
                     } else {
                         tallyPlayer2 = 0;
                         Toast.makeText(getApplicationContext(), "Player one rolled apen.", Toast.LENGTH_SHORT).show();
                         tally2.setText(tallyPlayer2 + " lines");
                         rollsText.setText(getIntent().getExtras().getString("player2") + " wins! 🎉");
+                        exit();
                     }
                 } else {
                     if(tallyPlayer2 < 7){
@@ -409,11 +416,13 @@ public class mainActivity extends Activity {
                         Toast.makeText(getApplicationContext(), "Player two rolled apen and WON.", Toast.LENGTH_SHORT).show();
                         tally2.setText(tallyPlayer2 + " lines");
                         rollsText.setText(getIntent().getExtras().getString("player2") + " wins! 🎉");
+                        exit();
                     } else {
                         tallyPlayer1 = 0;
                         Toast.makeText(getApplicationContext(), "Player two rolled apen and LOST.", Toast.LENGTH_SHORT).show();
                         tally1.setText(tallyPlayer1 + " lines");
                         rollsText.setText(getIntent().getExtras().getString("player1") + " wins! 🎉");
+                        exit();
                     }
                 }
             } else {
@@ -435,7 +444,6 @@ public class mainActivity extends Activity {
                 tally2.setText(tallyPlayer2 + " lines");
             }
         } else {
-
         }
     }
 
@@ -502,6 +510,16 @@ public class mainActivity extends Activity {
             Log.d("score", apen + " "+ zand + " " + soixneuf);
             Toast.makeText(getApplicationContext(), "Player two wins this round. Tally updated.", Toast.LENGTH_SHORT).show();
         }*/
+
+        public void exit(){
+            roll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent quit = new Intent(mainActivity.this, login.class);
+                    startActivity(quit);
+                }
+            });
+        }
 
     public static int randomValue(){
         Random r = new Random();
