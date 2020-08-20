@@ -143,36 +143,55 @@ public class mainActivity extends Activity {
     }
 
     public void firstRoll(){
-        rollsAmount -= 1;
-        rollsText.setText(rollsAmount + " rolls left");
-        // call rollDice() function
-        rollDice();
-        calcScore();
-        total1 = score;
-        totalScore = total1;
-        writeScore();
+        if(tallyPlayer1 == 0){
+            rollsText.setText(getIntent().getExtras().getString("player1") + " wins! 🎉");
+
+        } else if (tallyPlayer2 == 0){
+            rollsText.setText(getIntent().getExtras().getString("player2") + " wins! 🎉");
+        } else {
+            rollsAmount -= 1;
+            rollsText.setText(rollsAmount + " rolls left");
+            // call rollDice() function
+            rollDice();
+            calcScore();
+            total1 = score;
+            totalScore = total1;
+            writeScore();
+        }
     }
 
     public void secondRoll(){
-        rollsAmount -= 1;
-        rollsText.setText(rollsAmount + " rolls left");
-        // call rollDice() function
-        rollDice();
-        calcScore();
-        total2 = score;
-        totalScore = total1 + total2;
-        writeScore();
+        if(tallyPlayer1 == 0){
+            rollsText.setText(getIntent().getExtras().getString("player1") + " wins! 🎉");
+        } else if (tallyPlayer2 == 0){
+            rollsText.setText(getIntent().getExtras().getString("player2") + " wins! 🎉");
+        } else {
+            rollsAmount -= 1;
+            rollsText.setText(rollsAmount + " rolls left");
+            // call rollDice() function
+            rollDice();
+            calcScore();
+            total2 = score;
+            totalScore = total1 + total2;
+            writeScore();
+        }
     }
 
     public void thirdRoll(){
-        rollsAmount -= 1;
-        rollsText.setText(rollsAmount + " rolls left");
-        // call rollDice() function
-        rollDice();
-        calcScore();
-        total3 = score;
-        totalScore = total1 + total2 + total3;
-        writeScore();
+        if(tallyPlayer1 == 0){
+            rollsText.setText(getIntent().getExtras().getString("player1") + " wins! 🎉");
+        } else if (tallyPlayer2 == 0){
+            rollsText.setText(getIntent().getExtras().getString("player2") + " wins! 🎉");
+        } else {
+            rollsAmount -= 1;
+            rollsText.setText(rollsAmount + " rolls left");
+            // call rollDice() function
+            rollDice();
+            calcScore();
+            total3 = score;
+            totalScore = total1 + total2 + total3;
+            writeScore();
+        }
     }
 
     public void writeScore(){
@@ -375,18 +394,26 @@ public class mainActivity extends Activity {
                 if(activePlayer1){
                     if(tallyPlayer1 < 7){
                         tallyPlayer1 = 0;
+                        Toast.makeText(getApplicationContext(), "Player one rolled apen.", Toast.LENGTH_SHORT).show();
                         tally1.setText(tallyPlayer1 + " lines");
+                        rollsText.setText(getIntent().getExtras().getString("player1") + " wins! 🎉");
                     } else {
                         tallyPlayer2 = 0;
+                        Toast.makeText(getApplicationContext(), "Player one rolled apen.", Toast.LENGTH_SHORT).show();
                         tally2.setText(tallyPlayer2 + " lines");
+                        rollsText.setText(getIntent().getExtras().getString("player2") + " wins! 🎉");
                     }
                 } else {
                     if(tallyPlayer2 < 7){
                         tallyPlayer2 = 0;
+                        Toast.makeText(getApplicationContext(), "Player two rolled apen and WON.", Toast.LENGTH_SHORT).show();
                         tally2.setText(tallyPlayer2 + " lines");
+                        rollsText.setText(getIntent().getExtras().getString("player2") + " wins! 🎉");
                     } else {
                         tallyPlayer1 = 0;
+                        Toast.makeText(getApplicationContext(), "Player two rolled apen and LOST.", Toast.LENGTH_SHORT).show();
                         tally1.setText(tallyPlayer1 + " lines");
+                        rollsText.setText(getIntent().getExtras().getString("player1") + " wins! 🎉");
                     }
                 }
             } else {
@@ -420,6 +447,18 @@ public class mainActivity extends Activity {
 
     public void checkScores(){
         if(scorePlayer1 > scorePlayer2){
+            tallyPlayer1 -= 1;
+            tally1.setText(tallyPlayer1 + " lines");
+            Toast.makeText(getApplicationContext(), "Player one wins this round.", Toast.LENGTH_SHORT).show();
+        } else {
+            tallyPlayer2 -= 1;
+            tally2.setText(tallyPlayer2 + " lines");
+            Toast.makeText(getApplicationContext(), "Player two wins this round.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+        /*if(scorePlayer1 > scorePlayer2){
             if(apen){
                 if(tallyPlayer1 < 7) {
                     tallyPlayer1 = 0;
@@ -462,8 +501,7 @@ public class mainActivity extends Activity {
             Log.d("score", tallyPlayer1 + " " + tallyPlayer2);
             Log.d("score", apen + " "+ zand + " " + soixneuf);
             Toast.makeText(getApplicationContext(), "Player two wins this round. Tally updated.", Toast.LENGTH_SHORT).show();
-        }
-    }
+        }*/
 
     public static int randomValue(){
         Random r = new Random();
