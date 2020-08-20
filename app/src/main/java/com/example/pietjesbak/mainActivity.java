@@ -370,13 +370,45 @@ public class mainActivity extends Activity {
         }
 
         if(value1 == value2 && value2 == value3){
+            // APEN => check tally and set to 0 accordingly
             if(score == 300){
-                apen = true;
+                if(activePlayer1){
+                    if(tallyPlayer1 < 7){
+                        tallyPlayer1 = 0;
+                        tally1.setText(tallyPlayer1 + " lines");
+                    } else {
+                        tallyPlayer2 = 0;
+                        tally2.setText(tallyPlayer2 + " lines");
+                    }
+                } else {
+                    if(tallyPlayer2 < 7){
+                        tallyPlayer2 = 0;
+                        tally2.setText(tallyPlayer2 + " lines");
+                    } else {
+                        tallyPlayer1 = 0;
+                        tally1.setText(tallyPlayer1 + " lines");
+                    }
+                }
             } else {
-                zand = true;
+                // ZAND => tally-2
+                if(activePlayer1){
+                    tallyPlayer1 -= 2;
+                    tally1.setText(tallyPlayer1 + " lines");
+                } else {
+                    tallyPlayer2 -= 2;
+                    tally2.setText(tallyPlayer2 + " lines");
+                }
             }
         } else if (score == 69){
-            soixneuf = true;
+            if(activePlayer1){
+                tallyPlayer1 -= 3;
+                tally1.setText(tallyPlayer1 + " lines");
+            } else {
+                tallyPlayer2 -= 3;
+                tally2.setText(tallyPlayer2 + " lines");
+            }
+        } else {
+
         }
     }
 
@@ -428,7 +460,7 @@ public class mainActivity extends Activity {
                 tally2.setText(tallyPlayer2 + " lines");
             }
             Log.d("score", tallyPlayer1 + " " + tallyPlayer2);
-            Log.d("score", apen + " "+ zand + " " +soixneuf);
+            Log.d("score", apen + " "+ zand + " " + soixneuf);
             Toast.makeText(getApplicationContext(), "Player two wins this round. Tally updated.", Toast.LENGTH_SHORT).show();
         }
     }
